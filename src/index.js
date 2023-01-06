@@ -9,15 +9,30 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+import {BookDetail} from "./features/bookDetail/BookDetail";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+const router = createBrowserRouter([
+    {
+        path: "/home",
+        element: <App/>,
+    },
+    {
+        path: "/books/:bookId",
+        element: <BookDetail />
+    },
+]);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+        <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );
