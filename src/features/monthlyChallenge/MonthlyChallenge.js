@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchMonthlyChallenge,} from './monthlyChallengeSlice';
-import styles from './MonthlyChallenge.module.css';
 import {Button, Card, CardActions, CardContent, Grid, Typography} from "@mui/material";
+import {Link} from "react-router-dom";
 
 export function MonthlyChallenge() {
     const dispatch = useDispatch();
@@ -27,7 +27,9 @@ export function MonthlyChallenge() {
                             {book.ISBN}
                         </CardContent>
                         <CardActions>
-                            <Button size="small">More Info</Button>
+                            <Button size="small" component={Link} to={`/books/${index}`}>
+                                More Info
+                            </Button>
                         </CardActions>
                     </Card></Grid>
             )
@@ -35,8 +37,15 @@ export function MonthlyChallenge() {
     }
 
     return (
-        <Grid container spacing={2} alignItems="stretch" className={styles.cont}>
-            {renderBooks(books)}
+        <Grid container
+              spacing={0}
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+              sx={{minHeight: '100%', width: '75%', margin: 'auto'}}>
+            <Grid container spacing={2} alignItems="stretch">
+                {renderBooks(books)}
+            </Grid>
         </Grid>
     );
 }

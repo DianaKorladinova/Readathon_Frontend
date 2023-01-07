@@ -1,7 +1,7 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
+import {createRoot} from 'react-dom/client';
+import {Provider} from 'react-redux';
+import {store} from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
@@ -14,27 +14,34 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import {BookDetail} from "./features/bookDetail/BookDetail";
+import {MonthlyChallenge} from "./features/monthlyChallenge/MonthlyChallenge";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 const router = createBrowserRouter([
     {
-        path: "/home",
+        path: "/",
         element: <App/>,
-    },
-    {
-        path: "/books/:bookId",
-        element: <BookDetail />
+        children: [
+            {
+                path: "",
+                element: <MonthlyChallenge/>,
+            },
+            {
+                path: "books/:bookId",
+                element: <BookDetail/>,
+            },
+        ],
     },
 ]);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-        <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Provider store={store}>
+            <RouterProvider router={router}/>
+        </Provider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

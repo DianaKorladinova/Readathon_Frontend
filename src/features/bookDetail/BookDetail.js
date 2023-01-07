@@ -16,7 +16,7 @@ export function BookDetail () {
     useEffect(() => {
         if (books.length === 0) {
             dispatch(fetchMonthlyChallenge())
-        } else if (!bookDetail) {
+        } else {
             dispatch(fetchBookDetail(books[bookId]))
         }
     }, [bookId, books, dispatch])
