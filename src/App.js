@@ -40,7 +40,7 @@ function App() {
             {!connected ? <Typography mt="2em" ml="1em" variant="h2">{err.message}</Typography> :
                 <>
                     <Grid container alignItems="center" direction="column" sx={{minHeight: "100vh", padding: "10vh"}}
-                          justifyContent="space-between">
+                          justifyContent="space-around">
                         <Grid item >{renderNav()}</Grid>
                         <Grid item><Outlet/> </Grid>
                     </Grid>

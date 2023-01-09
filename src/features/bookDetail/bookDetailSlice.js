@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { fetchDetail } from './bookDetailAPI'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {fetchDetail} from './bookDetailAPI'
 
 const initialState = {
     bookDetail: null,
+    status: 'idle'
 }
 
 export const fetchBookDetail = createAsyncThunk(
@@ -15,20 +16,22 @@ export const fetchBookDetail = createAsyncThunk(
 export const bookDetailSlice = createSlice({
     name: 'bookDetail',
     initialState,
-    // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
-        reset (state) {
+        reset(state) {
             state.answers = []
         },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchBookDetail.fulfilled, (state, action) => {
             state.bookDetail = action.payload
+            state.status = 'idle'
+        }).addCase(fetchBookDetail.pending, (state) => {
+            state.status = 'fetching'
         })
 
     },
 })
 
-export const { reset } = bookDetailSlice.actions
+export const {reset} = bookDetailSlice.actions
 
 export default bookDetailSlice.reducer
