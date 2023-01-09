@@ -16,7 +16,7 @@ export function MonthlyChallenge() {
         return books.map((book, index) => {
 
             return (<Grid key={index} item style={{display: 'flex'}}>
-                    <Card style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
+                    <Card style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
                                 {book.title}
