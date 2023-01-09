@@ -1,15 +1,23 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import {fetchDetail} from './bookDetailAPI'
+import {fetchDetail, verify} from './bookDetailAPI'
 
 const initialState = {
     bookDetail: null,
-    status: 'idle'
+    status: 'idle',
+    eligible: false
 }
 
 export const fetchBookDetail = createAsyncThunk(
     'bookDetail/fetchBookDetail',
     async (book, _) => {
         return await fetchDetail(book)
+    },
+)
+
+export const verifyWin = createAsyncThunk(
+    'bookDetail/verifyWin',
+    async () => {
+        return verify()
     },
 )
 
@@ -27,6 +35,9 @@ export const bookDetailSlice = createSlice({
             state.status = 'idle'
         }).addCase(fetchBookDetail.pending, (state) => {
             state.status = 'fetching'
+        }).addCase(verifyWin.fulfilled, (state,action) => {
+            state.eligible = action.payload.eligible
+            console.log(action.payload)
         })
 
     },

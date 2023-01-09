@@ -41,7 +41,7 @@ function Modal() {
     function renderFields() {
         const fields = modalForm["fields"].map(field => {
             const type = field.type ? field.type : "text"
-            return (<TextFieldElement sx={{mb: 1}} fullWidth name={field.name} label={field.label} type={type}
+            return (<TextFieldElement key={field.name} sx={{mb: 1}} fullWidth name={field.name} label={field.label} type={type}
                                       required/>)
         })
         return (
