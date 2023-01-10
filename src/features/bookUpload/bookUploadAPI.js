@@ -10,7 +10,7 @@ export function searchBook(book) {
 }
 
 export function uploadBook(book) {
-    return fetch(`http://localhost:8881/books/add`, {
+    return fetch(`http://localhost/books/add`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
