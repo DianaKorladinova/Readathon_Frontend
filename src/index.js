@@ -30,7 +30,7 @@ const router = createBrowserRouter([
                 element: <MonthlyChallenge/>,
             },
             {
-                path: "books/:bookId",
+                path: "book/:bookId",
                 element: <BookDetail/>,
             },
             {

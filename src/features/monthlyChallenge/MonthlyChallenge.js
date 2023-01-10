@@ -26,7 +26,7 @@ export function MonthlyChallenge() {
                             {book.ISBN}
                         </CardContent>
                         <CardActions>
-                            <Button size="small" component={Link} to={`/books/${index}`}>
+                            <Button size="small" component={Link} to={`/book/${index}`}>
                                 More Info
                             </Button>
                         </CardActions>

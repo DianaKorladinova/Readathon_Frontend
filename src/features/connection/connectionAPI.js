@@ -1,7 +1,7 @@
 export function checkConnectionToServer() {
     let token = localStorage.getItem("token")
     if (!token) token = ""
-    return fetch("http://diana.virtual-jware.com/check", {
+    return fetch("http://diana.jware-virtual.com/check", {
         headers: {
             'Content-type': 'application/json', 'Authorization': `Bearer ${token}`, // notice the Bearer before your token
         }
