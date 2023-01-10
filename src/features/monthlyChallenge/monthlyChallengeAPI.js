@@ -1,3 +1,3 @@
 export function fetchChallenge() {
-    return fetch("http://diana.jware-virtual.com/books/monthly-challenge").then(response => response.json())
+    return fetch("https://diana.jware-virtual.com:8443/books/monthly-challenge").then(response => response.json())
 }

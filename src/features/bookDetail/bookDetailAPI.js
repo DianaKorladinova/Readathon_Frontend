@@ -7,7 +7,7 @@ export function fetchDetail(book, type="ISBN") {
 }
 
 export function verify() {
-    return fetch(`http://diana.jware-virtual.com/books/check-eligibility`)
+    return fetch(`https://diana.jware-virtual.com:8443/books/check-eligibility`)
         .then(response => response.json()).then(json=>{
             return json
         })
