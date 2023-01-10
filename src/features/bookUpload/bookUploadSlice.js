@@ -1,13 +1,18 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {searchBook} from "./bookUploadAPI";
+import {searchBook, uploadBook} from "./bookUploadAPI";
 
 const initialState = {
     searchResults: [],
-    status: 'idle'
+    status: 'idle',
+    ok: false
 };
 
 export const search = createAsyncThunk('upload/search', async (title) => {
     return searchBook(title)
+});
+
+export const upload = createAsyncThunk('upload/upload', async (book) => {
+    return uploadBook(book)
 });
 
 export const bookUploadSlice = createSlice({
@@ -17,6 +22,8 @@ export const bookUploadSlice = createSlice({
             state.searchResults = action.payload
         }).addCase(search.pending, (state) => {
             state.status = 'fetching'
+        }).addCase(upload.fulfilled, (state, action) => {
+            state.ok = action.payload.successful
         });
     },
 });

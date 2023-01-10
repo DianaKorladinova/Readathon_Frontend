@@ -8,3 +8,17 @@ export function searchBook(book) {
         })
         .catch(() => [])
 }
+
+export function uploadBook(book) {
+    return fetch(`http://localhost:8000/books/add`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify(book)
+    })
+        .then(response => ({successful: response.status === 201}))
+        .catch(() => ({successful: false}))
+}
