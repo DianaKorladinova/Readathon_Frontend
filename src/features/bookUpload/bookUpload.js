@@ -25,13 +25,14 @@ function BookUpload() {
     const arr = useSelector(state => state.upload.searchResults)
     const status = useSelector(state => state.upload.status)
     const ok = useSelector(state => state.upload.ok)
+    const logged = useSelector(state => state.connection.logged)
     const [selected, setSelected] = useState(-1)
     const [questionValues, setQuestionValues] = useState({});
     const [correct, setCorrect] = useState([]);
 
     useEffect(() => {
-        if (ok) navigate('/')
-    }, [ok, navigate]);
+        if (ok || !logged) navigate('/')
+    }, [logged, ok, navigate]);
 
 
     const searchTitle = (data) => {
@@ -99,7 +100,6 @@ function BookUpload() {
         setQuestionValues({...questionValues, [`question${num}`]: {name: '', a1: '', a2: '', a3: ''}})
         let arr = [...correct]
         arr.push(0)
-        console.log(arr);
         setCorrect(arr)
     }
 
