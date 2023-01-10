@@ -8,7 +8,6 @@ const initialState = {
 
 export const checkConnection = createAsyncThunk('connection/validity', async (con, thunkAPI) => {
     const result = await checkConnectionToServer()
-    console.log(result);
     let {success} = result
     if (success) {
         return result.response

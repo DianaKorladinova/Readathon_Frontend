@@ -7,7 +7,7 @@ export function fetchDetail(book, type="ISBN") {
 }
 
 export function verify() {
-    return fetch(`http://localhost:8000/books/check-eligibility`)
+    return fetch(`http://localhost:8881/books/check-eligibility`)
         .then(response => response.json()).then(json=>{
             return json
         })

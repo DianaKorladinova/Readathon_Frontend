@@ -12,7 +12,6 @@ export function MonthlyChallenge() {
     }, [dispatch])
 
     let renderBooks = (books) => {
-        console.log(books)
         return books.map((book, index) => {
 
             return (<Grid key={index} item style={{display: 'flex'}}>

@@ -15,7 +15,6 @@ function App() {
     const token = useSelector(state => state.modal.token)
 
     useEffect(() => {
-        console.log("rechecked")
         dispatch(checkConnection())
     }, [dispatch, token])
 

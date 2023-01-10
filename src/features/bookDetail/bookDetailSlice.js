@@ -37,7 +37,6 @@ export const bookDetailSlice = createSlice({
             state.status = 'fetching'
         }).addCase(verifyWin.fulfilled, (state,action) => {
             state.eligible = action.payload.eligible
-            console.log(action.payload)
         })
 
     },
