@@ -1,5 +1,5 @@
 export function login(user) {
-    return fetch("http://localhost:8881/users/login", {
+    return fetch("http://diana.virtual-jware.com:8881/users/login", {
         method: 'POST', credentials: 'include', headers: {
             'Accept': 'application/json', 'Content-Type': 'application/json'
         }, body: JSON.stringify(user)
@@ -16,7 +16,7 @@ export function login(user) {
 
 export function register(user) {
     let {username, password} = user
-    return fetch("http://localhost:8881/users/register", {
+    return fetch("http://diana.virtual-jware.com:8881/users/register", {
         method: 'POST', credentials: 'include', headers: {
             'Accept': 'application/json', 'Content-Type': 'application/json'
         }, body: JSON.stringify({username, password})
