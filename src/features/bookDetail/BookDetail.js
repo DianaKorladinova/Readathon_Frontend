@@ -40,6 +40,7 @@ export function BookDetail() {
 
     const checkAnswers = () => {
         const answers = books[bookId].questions.map(q => q.correct)
+        console.log(answers);
         let correct = true
         for (const answer in answers) {
             if (Number(valRadio[answer]) !== answers[answer]) {
@@ -47,7 +48,7 @@ export function BookDetail() {
                 break
             }
         }
-        localStorage.setItem(`answered${bookId}`, "yes")
+        // localStorage.setItem(`answered${bookId}`, "yes")
         if (correct) {
             dispatch(verifyWin())
         }

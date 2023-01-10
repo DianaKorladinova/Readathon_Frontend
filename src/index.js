@@ -15,6 +15,7 @@ import {
 } from "react-router-dom";
 import {BookDetail} from "./features/bookDetail/BookDetail";
 import {MonthlyChallenge} from "./features/monthlyChallenge/MonthlyChallenge";
+import BookUpload from "./features/bookUpload/bookUpload";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: "books/:bookId",
                 element: <BookDetail/>,
+            },
+            {
+                path: "add",
+                element: <BookUpload/>,
             },
         ],
     },
