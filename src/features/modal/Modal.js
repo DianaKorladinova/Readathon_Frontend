@@ -37,11 +37,13 @@ function Modal() {
     }
 
     const logged = useSelector(state => state.connection.logged)
+    const error = useSelector(state => state.modal.loginError)
+    console.log(error);
 
     function renderFields() {
         const fields = modalForm["fields"].map(field => {
             const type = field.type ? field.type : "text"
-            return (<TextFieldElement key={field.name} sx={{mb: 1}} fullWidth name={field.name} label={field.label} type={type}
+            return (<TextFieldElement error helperText={field.type && error} key={field.name} sx={{mb: 1}} fullWidth name={field.name} label={field.label} type={type}
                                       required/>)
         })
         return (

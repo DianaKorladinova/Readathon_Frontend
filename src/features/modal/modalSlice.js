@@ -2,7 +2,8 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {login, register} from "./modalAPI";
 
 const initialState = {
-    open: false
+    open: false,
+    loginError: false,
 };
 
 
@@ -50,15 +51,18 @@ export const modalSlice = createSlice({
                 state.token = token
                 state.open = false
                 localStorage.setItem('token', token);
+                state.loginError= false
             }).addCase(loginUser.rejected, (state, action) => {
-            state.err = action.payload.err
+            state.loginError = action.payload.message
+            console.log(action.payload.message);
         }).addCase(registerUser.fulfilled, (state, action) => {
             const {token} = action.payload
             state.token = token
             state.open = false
             localStorage.setItem('token', token);
+            state.loginError= false
         }).addCase(registerUser.rejected, (state, action) => {
-            state.err = action.payload.err
+            state.loginError = action.payload.message
         })
         ;
     },

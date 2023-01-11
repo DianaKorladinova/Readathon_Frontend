@@ -15,6 +15,7 @@ export function BookDetail() {
     const status = useSelector(state => state.book.status)
     const eligible = useSelector(state => state.book.eligible)
     const logged = useSelector(state => state.connection.logged)
+    const [closed, setClosed] = useState(localStorage.getItem(`answered${bookId}`)==='yes')
     const navigate = useNavigate();
     const dispatch = useDispatch()
     useEffect(() => {
@@ -47,14 +48,16 @@ export function BookDetail() {
                 break
             }
         }
-        // localStorage.setItem(`answered${bookId}`, "yes")
+        localStorage.setItem(`answered${bookId}`, "yes")
+        setClosed(true)
         if (correct) {
             dispatch(verifyWin())
         }
     }
 
     function renderQuestions() {
-        if (!logged || !books[bookId] || localStorage.getItem(`answered${bookId}`)) return;
+        if (!logged || !books[bookId]) return;
+        if (closed) return (<Typography mt={3} variant="body2" align="center">You've already answered these questions</Typography>)
         const qs = books[bookId].questions.map((q, index) => {
             const as = q.answers.map((answer, i) =>
                 <FormControlLabel key={i} value={i} control={<Radio/>} label={answer}/>)
@@ -93,7 +96,7 @@ export function BookDetail() {
                     <Grid container spacing={2}>
                         <Grid item sx={{width: 200, height: 300}}>
                             <img style={{maxHeight: "100%", maxWidth: "100%"}} alt="complex"
-                                 src="https://ia800606.us.archive.org/view_archive.php?archive=/32/items/olcovers642/olcovers642-L.zip&file=6425240-L.jpg"/>
+                                 src={`https://covers.openlibrary.org/b/id/${bookDetail.covers}%20-L.jpg`}/>
                         </Grid>
                         <Grid item xs={12} sm container>
                             <Grid item xs container direction="column" spacing={2}>
